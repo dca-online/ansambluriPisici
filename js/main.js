@@ -1,4 +1,4 @@
-const products=[{id:1,name:"Wall Haven",category:"wall-mounted",price:"500 RON",image:"assets/img/wall.jpg"},{id:2,name:"Tower Supreme",category:"floor-standing",price:"1000 RON",image:"assets/img/tower.avif"},{id:3,name:"Modular Paradise",category:"modular",price:"1500 RON",image:"assets/img/modular.jpg"}];const testimonials=[{id:1,name:"Maria & Mop",text:"Pisica noastră nu s-a oprit să joace de când am instalat ansamblul!",avatar:"assets/img/cat2.webp"},{id:2,name:"Mihai & Luna",text:"Design-ul este atât de frumos încât chiar și pisica se minuna când l-a văzut.",avatar:"assets/img/cat1.jpg"}];class ProductGallery{constructor(){this.filterButtons=document.querySelectorAll('.filter-btn');this.productGrid=document.querySelector('.product-grid');this.currentFilter='all';this.init()}
+const products=[{id:1,name:"Wall Haven",category:"wall-mounted",price:"500 RON",image:"assets/img/wall.jpg"},{id:2,name:"Tower Supreme",category:"floor-standing",price:"1000 RON",image:"assets/img/tower.avif"},{id:3,name:"Modular Paradise",category:"modular",price:"1500 RON",image:"assets/img/modular.jpg"}];const testimonials=[{id:1,name:"Maria & Mop",text:"Pisica noastră nu s-a oprit să se joace de când am instalat ansamblul!",avatar:"assets/img/cat2.webp"},{id:2,name:"Mihai & Luna",text:"Design-ul este atât de frumos încât chiar și pisica se minuna când l-a văzut.",avatar:"assets/img/cat1.jpg"}];class ProductGallery{constructor(){this.filterButtons=document.querySelectorAll('.filter-btn');this.productGrid=document.querySelector('.product-grid');this.currentFilter='all';this.init()}
 init(){this.renderProducts();this.filterButtons.forEach(btn=>{btn.addEventListener('click',()=>this.filterProducts(btn))})}
 renderProducts(){const filteredProducts=this.currentFilter==='all'?products:products.filter(p=>p.category===this.currentFilter);this.productGrid.innerHTML=filteredProducts.map(product=>`
             <div class="product-card glassmorphic">
@@ -23,8 +23,8 @@ next(){this.currentIndex=Math.min(testimonials.length-1,this.currentIndex+1);thi
 updatePosition(){this.track.style.transform=`translateX(-${this.currentIndex * 100}%)`}}
 class FormHandler{constructor(){this.newsletterForm=document.getElementById('newsletter-form');this.init()}
 init(){this.newsletterForm.addEventListener('submit',(e)=>this.handleSubmit(e))}
-handleSubmit(e){e.preventDefault();const email=e.target.email.value;if(!this.validateEmail(email)){this.showError('Please enter a valid email address');return}
-this.showSuccess('Thank you for subscribing!');e.target.reset()}
+handleSubmit(e){e.preventDefault();const email=e.target.email.value;if(!this.validateEmail(email)){this.showError('Va rog introduceti o adresa valida de email');return}
+this.showSuccess('Multumim pentru inregistrare!');e.target.reset()}
 validateEmail(email){return/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)}
 showError(message){this.showMessage(message,'error')}
 showSuccess(message){this.showMessage(message,'success')}
